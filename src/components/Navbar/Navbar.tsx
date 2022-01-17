@@ -3,9 +3,11 @@ import { FiMenu } from "react-icons/fi";
 import { GrSearch } from "react-icons/gr";
 import { FaUserAlt, FaShoppingCart } from "react-icons/fa";
 import { useGlobalState } from "../../AppContext";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
     const { showSidebar } = useGlobalState()
+    const navigate = useNavigate()
     return (
         <div className="navbar">
             <nav className="navbar-wrapper">
@@ -20,7 +22,7 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div className="navbar-right">
-                    <div className="icon-wrapper">
+                    <div onClick={() => navigate('/login')} className="icon-wrapper">
                         <FaUserAlt />
                     </div>
                     <div className="icon-wrapper">

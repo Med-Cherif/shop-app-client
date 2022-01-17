@@ -11,8 +11,7 @@ import LoginScreen from "./screens/LoginScreen";
 function App() {
   return (
     <div className="App test">
-      <Navbar />
-      <CategoriesBar />
+      
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
