@@ -1,0 +1,32 @@
+.application-description-wrapper {
+    background: var(--main-color);
+    padding: 50px 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.application-description-heading {
+    font-size: 32px;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.application-description-text {
+    font-size: 17px;
+    line-height: 1.5;
+    color: #f9f9f9;
+    
+}
+
+.application-description-button {
+    margin-top: 30px;
+    padding: 12px 18px;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}

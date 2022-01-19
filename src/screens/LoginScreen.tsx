@@ -1,19 +1,52 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import AppDescription from "../components/AppDescription";
 import FormInput from "../components/Form/FormInput";
 import "./styles/Login.css";
 
 const LoginScreen = () => {
+
+    const [loginData, setLoginData] = useState({
+        preferedField: "",
+        password: ""
+    })
+
+    const fillLoginFields = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setLoginData((prevData) => {
+            return {...prevData, [e.target.name]: e.target.value}
+        })
+    }
+
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        return new Promise((resolve) => setTimeout(() => {
+            console.log(loginData)
+            resolve(loginData)
+        }, 2000))
+    }
+    
+    
+
     return (
-        <div className="login-screen full-screen">
+        <div className="auth-screen full-screen pd-y pd-x">
             <div className="container">
-                <div className="login-screen-wrapper">
-                    <div className="application-description-wrapper">
-                        <h2 className="application-description-heading">Welcome to <span>Bibo app</span></h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore velit architecto voluptatibus cupiditate. Exercitationem, rem! Voluptate non aliquam sint aperiam, at ad quod, dolor delectus deleniti debitis quas modi, consequuntur consectetur amet error sequi recusandae.</p>
-                    </div>
+                <div className="auth-screen-wrapper">
+                    <AppDescription />
                     <div className="form-wrapper">
-                        <form className="form">
+                        <form onSubmit={onSubmit} className="form">
                             <h2 className="form-title">Sign in</h2>
-                            <FormInput name="preferedField" onChange={() => {}} type="text" />
+                            <FormInput placeholder="Username or E-mail" name="preferedField" onChange={fillLoginFields} type="text" />
+                            <FormInput placeholder="Password" name="password" onChange={fillLoginFields} type="password" />
+
+                            <div className="submit-button-wrapper">
+                                <button className="submit-button" type="submit">Sign in</button>
+                            </div>
+
+                            <div className="auth-links">
+                                <Link to="/register">New here? create a new Account</Link>
+                                <Link to="/forgot-password">Forgot password?</Link>
+                            </div>
+                            
                         </form>
                     </div>
                 </div>

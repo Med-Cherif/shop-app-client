@@ -5,9 +5,17 @@ const appReducer = combineReducers({
     auth: authReducer
 })
 
-const rootReducer = (state: any, action: any) => {
+const rootReducer = (state: any /* ReturnType<typeof appReducer> */, action: any) => {
     if (action.type === 'auth/logout') {
-        
+        state = {
+            auth: {
+                accessToken: null,
+                refreshToken: null,
+                error: null,
+                isLoading: false,
+                userData: null
+            }
+        }
     }
     return appReducer(state, action)
 }
