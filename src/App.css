@@ -11,8 +11,8 @@
     --white-text-color: #000;
     --main-color: #900C3F;
     --secondary-color: #2980B9;
-    --error-color: #B00020;
     --grey-background: #f0f0f0;
+    --error-color: #FFCCCC;
 }
 
 body {

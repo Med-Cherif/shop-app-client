@@ -1,11 +1,14 @@
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
-import AppDescription from "../components/AppDescription"
-import FormFooter from "../components/Form/FormFooter"
-import FormInput from "../components/Form/FormInput"
-import GoogleAuth from "../components/Form/GoogleAuth"
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import AppDescription from "../components/AppDescription";
+import FormFooter from "../components/Form/FormFooter";
+import FormInput from "../components/Form/FormInput";
+import { signupAction } from "../redux/actions/authActions";
 
 const RegisterScreen = () => {
+
+    const dispatch = useDispatch()
 
     const [registerData, setRegisterData] = useState({
         username: "",
@@ -23,6 +26,7 @@ const RegisterScreen = () => {
 
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        dispatch(signupAction(registerData))
     }
 
     return (

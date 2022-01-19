@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import jwtDecode from "jwt-decode";
+import { getAccessToken, getRefreshToken, getUserData } from "../../helpers/authHelpers";
 
 const initialState = {
     isLoading: false,
     error: null,
-    accessToken: null,
-    refreshToken: null,
-    userData: null,
+    accessToken: null || getAccessToken(),
+    refreshToken: null || getRefreshToken(),
+    userData: null || getUserData(),
 }
 
 const authSlice = createSlice({
@@ -28,6 +29,9 @@ const authSlice = createSlice({
             state.refreshToken = payload.refreshToken
             state.userData = jwtDecode(payload.accessToken)
             localStorage.setItem('chemo', JSON.stringify({ accessToken: payload.accessToken, refreshToken: payload.refreshToken }))
+        },
+        resetAuthError: (state) => {
+            state.error = null;
         }
     }
 })

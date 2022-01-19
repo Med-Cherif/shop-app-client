@@ -1,0 +1,8 @@
+.alert {
+    padding: 6px 18px;
+    text-align: center;
+    background: var(--main-color);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+}

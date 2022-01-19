@@ -1,0 +1,24 @@
+.top-error {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: transform .4s;
+    background: var(--error-color);
+    padding: 20px;
+}
+
+.top-error.visible {
+    
+}
+
+.top-error-item {
+    padding: 6px 8px;
+}
+
+.top-error-item.first {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}

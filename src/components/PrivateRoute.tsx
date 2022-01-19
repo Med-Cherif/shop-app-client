@@ -1,14 +1,14 @@
 import { Navigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 
-const PublicRoute = ({ children }: { children: React.ReactNode }) => {
-    // const state = useSelector((state: RootState) => state.auth)
+const PrivateRoute = ({ children }: { children: JSX.Element }) => {
+    const { accessToken } = useSelector((state: RootState) => state.auth)
     const location = useLocation()
-    const isAuth = false
-    if (!isAuth) {
-        return <Navigate to="/register" replace={true} state={location} />
+    if (!accessToken) {
+        return <Navigate to="/login" replace={true} state={location} />
     }
     return children
 }
 
-export default PublicRoute
+export default PrivateRoute
