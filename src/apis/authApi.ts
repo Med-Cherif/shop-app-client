@@ -24,6 +24,10 @@ class AuthApis {
         return axios.post(AUTH_API_URL + '/signup', signupData)
     }
 
+    signout(userId: string) {
+        return axios.get(`${AUTH_API_URL}/signout/${userId}`)
+    }
+
     confirmEmail(email: string, token: string) {
         return axios.get(`${AUTH_API_URL}/account/confirmation/${email}/${token}`)
     }

@@ -78,6 +78,29 @@
     gap: 12px;
 }
 
+.navbar-right-item-wrapper { 
+    position: relative;
+}
+
+.user-drop-menu {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translate(-100%, 100%);
+    width: 160px;
+    background: #fff;
+    padding: 15px 0;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px 0 rgb(0 0 0 / 20%);
+    display: none
+}
+
+.user-drop-menu.visible {
+    display: block;
+}
+
+
+
 @media (max-width: 767px) {
     .navbar {
         padding: 10px 25px;

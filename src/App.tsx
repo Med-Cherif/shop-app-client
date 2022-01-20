@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<HomeScreen />} />
         <Route path="/register" element={<PublicRoute><RegisterScreen /></PublicRoute>} />
         <Route path="/login" element={<PublicRoute><LoginScreen /></PublicRoute>} />
-        <Route path="/confirmaion/:email/:token" element={<PublicRoute><ConfirmationScreen /></PublicRoute>} />
+        <Route path="/confirmation/:email/:token" element={<ConfirmationScreen />} />
       </Routes>
       <Sidebar />
       <TopError />

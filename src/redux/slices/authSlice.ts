@@ -30,6 +30,9 @@ const authSlice = createSlice({
             state.userData = jwtDecode(payload.accessToken)
             localStorage.setItem('chemo', JSON.stringify({ accessToken: payload.accessToken, refreshToken: payload.refreshToken }))
         },
+        logout: (state) => {
+            localStorage.removeItem('chemo')
+        },
         resetAuthError: (state) => {
             state.error = null;
         }

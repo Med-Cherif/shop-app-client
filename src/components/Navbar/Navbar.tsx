@@ -1,13 +1,35 @@
 import "./Navbar.css";
+import { useState } from "react";
+import { RootState } from "../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
 import { FiMenu } from "react-icons/fi";
 import { GrSearch } from "react-icons/gr";
-import { FaUserAlt, FaShoppingCart } from "react-icons/fa";
+import { FaUserAlt, FaShoppingCart, FaSignOutAlt } from "react-icons/fa";
 import { useGlobalState } from "../../AppContext";
 import { useNavigate } from "react-router-dom";
+import { logoutAction } from "../../redux/actions/authActions";
 
 const Navbar = () => {
-    const { showSidebar } = useGlobalState()
+    const [isUserMenuVisible, setIsUserMenuVisible] = useState(false)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const { showSidebar } = useGlobalState()
+    const { accessToken } = useSelector((state: RootState) => state.auth);
+
+    const toggleUserMenu = () => setIsUserMenuVisible((prev) => !prev);
+    const navigateToSigninScreen = () => navigate('/login');
+
+    const signout = () => {
+        dispatch(logoutAction(navigate))
+    }
+
+    const handleOnUserClick = () => {
+        if (accessToken) {
+            return toggleUserMenu()
+        }
+        navigateToSigninScreen()
+    }
+
     return (
         <div className="navbar">
             <nav className="navbar-wrapper">
@@ -22,10 +44,22 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div className="navbar-right">
-                    <div onClick={() => navigate('/login')} className="icon-wrapper">
+                    <div onClick={handleOnUserClick} className="navbar-right-item-wrapper">
                         <FaUserAlt />
+                        {
+                            accessToken && (
+                                <div className={`user-drop-menu ${isUserMenuVisible ? "visible" : ""}`}>
+                                    <ul>
+                                        <li onClick={signout} className="user-bar-item">
+                                            <FaSignOutAlt />
+                                            Logout
+                                        </li>
+                                    </ul>
+                                </div>
+                            )
+                        }
                     </div>
-                    <div className="icon-wrapper">
+                    <div className="navbar-right-item-wrapper">
                         <FaShoppingCart />
                     </div>
                 </div>

@@ -1,0 +1,15 @@
+.user-bar-item {
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.user-bar-text {
+    font-size: 18px;
+}
+
+.user-bar-item:hover {
+    background: var(--grey-background)
+}
