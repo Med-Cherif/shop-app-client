@@ -17,6 +17,15 @@ const rootReducer = (state: any /* ReturnType<typeof appReducer> */, action: any
             }
         }
     }
+    if (action.type === 'reset') {
+        state = {
+            ...state,
+            auth: {
+                ...state.auth,
+                error: null
+            }
+        }
+    }
     return appReducer(state, action)
 }
 

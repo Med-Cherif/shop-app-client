@@ -23,6 +23,12 @@ class AuthApis {
     signup(signupData: SignupData) {
         return axios.post(AUTH_API_URL + '/signup', signupData)
     }
+
+    confirmEmail(email: string, token: string) {
+        return axios.get(`${AUTH_API_URL}/account/confirmation/${email}/${token}`)
+    }
 }
+
+
 
 export default AuthApis

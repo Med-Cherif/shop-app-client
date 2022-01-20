@@ -31,18 +31,28 @@ export const signupAction = (signupData: SignupData) => async (dispatch: AppDisp
     if (validate === true) {
         try {
             const { data } = await authApis.signup(signupData)
-            console.log(data)
             dispatch(authActions.authSuccess({
                 accessToken: data.accessToken,
                 refreshToken: data.refreshToken
             }))
         } catch (error) {
-            console.log('server---', error)
             dispatch(authActions.error(handleErrors(error)))
         }
     } else {
         dispatch(authActions.error(validate))
-        console.log('client-----', validate)
     }
     authValidation.resetError()
+}
+
+export const confirmEmailAction = (email: string, token: string) => async (dispatch: AppDispatch) => {
+    dispatch(authActions.loading())
+    try {
+        const { data } = await authApis.confirmEmail(email, token)
+        dispatch(authActions.authSuccess({
+            accessToken: data.accessToken,
+            refreshToken: data.refreshToken
+        }))
+    } catch (error) {
+        dispatch(authActions.error(handleErrors(error)))
+    }
 }
