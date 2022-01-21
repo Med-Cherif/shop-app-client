@@ -1,4 +1,5 @@
 import "./App.css";
+import { createPortal } from "react-dom";
 import { Route, Routes } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -7,6 +8,7 @@ import LoginScreen from "./screens/LoginScreen";
 import TopError from "./components/Errors/TopError";
 import PublicRoute from "./components/PublicRoute";
 import ConfirmationScreen from "./screens/ConfirmationScreen";
+import Portal from "./components/Portal";
 
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
       </Routes>
       <Sidebar />
       <TopError />
+      <Portal />
     </div>
   );
 }

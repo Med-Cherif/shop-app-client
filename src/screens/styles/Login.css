@@ -60,6 +60,11 @@
     cursor: pointer;
 }
 
+.submit-button:disabled {
+    background: var(--grey-background);
+    pointer-events: none;
+}
+
 .submit-button:hover {
     background: var(--white-background-color);
     color: var(--secondary-color);

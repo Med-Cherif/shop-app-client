@@ -3,7 +3,7 @@ import axios from "axios";
 const AUTH_API_URL = process.env.REACT_APP_API_URL;
 
 export interface SigninData {
-    preferedSocial: string;
+    preferedField: string;
     password: string;
 }
 
@@ -28,8 +28,16 @@ class AuthApis {
         return axios.get(`${AUTH_API_URL}/signout/${userId}`)
     }
 
+    resendActivateAccountLink(email: string) {
+        return axios.get(`${AUTH_API_URL}/account/resend-link/${email}`)
+    }
+
     confirmEmail(email: string, token: string) {
         return axios.get(`${AUTH_API_URL}/account/confirmation/${email}/${token}`)
+    }
+
+    getValidAccessToken(refreshToken: string) {
+        return axios.post(`${AUTH_API_URL}/refresh-token`, { refreshToken })
     }
 }
 

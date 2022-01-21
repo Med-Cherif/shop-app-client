@@ -9,7 +9,7 @@ const ConfirmationScreen = () => {
 
     const dispatch = useDispatch()
     const { email, token } = useParams()
-    const { isLoading, error, userData } = useSelector((state: RootState) => state.auth)
+    const { loading: { type, isLoading }, error, userData } = useSelector((state: RootState) => state.auth)
 
     useEffect(() => {
         if (email && token) {
@@ -17,7 +17,7 @@ const ConfirmationScreen = () => {
         }
     }, [])
 
-    if (isLoading) {
+    if ((isLoading && type === 'confirmation-email')) {
         return <div className="confirmation-loading"></div>
     }
 

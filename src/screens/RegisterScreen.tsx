@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AppDescription from "../components/AppDescription";
 import FormFooter from "../components/Form/FormFooter";
 import FormInput from "../components/Form/FormInput";
 import { signupAction } from "../redux/actions/authActions";
+import { RootState } from "../redux/store";
 
 const RegisterScreen = () => {
 
     const dispatch = useDispatch()
+    const { loading: { isLoading, type } } = useSelector((state: RootState) => state.auth)
 
     const [registerData, setRegisterData] = useState({
         username: "",
@@ -45,7 +47,13 @@ const RegisterScreen = () => {
                             <FormInput placeholder="Confirm password" name="confirmPassword" onChange={fillRegisterFields} type="password" />
 
                             <div className="submit-button-wrapper">
-                                <button className="submit-button" type="submit">Sign up</button>
+                                <button 
+                                    className="submit-button" 
+                                    type="submit"
+                                    disabled={(isLoading && type === 'sign')}
+                                >
+                                    {(isLoading && type === 'sign') ? "Loading..." : "Sign up"}
+                                </button>
                             </div>
 
                             <div className="auth-links">

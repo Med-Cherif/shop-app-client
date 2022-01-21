@@ -1,11 +1,16 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AppDescription from "../components/AppDescription";
 import FormInput from "../components/Form/FormInput";
+import { signinAction } from "../redux/actions/authActions";
+import { RootState } from "../redux/store";
 import "./styles/Login.css";
 
 const LoginScreen = () => {
 
+    const dispatch = useDispatch()
+    const { loading: { type, isLoading } } = useSelector((state: RootState) => state.auth)
     const [loginData, setLoginData] = useState({
         preferedField: "",
         password: ""
@@ -19,10 +24,7 @@ const LoginScreen = () => {
 
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        return new Promise((resolve) => setTimeout(() => {
-            console.log(loginData)
-            resolve(loginData)
-        }, 2000))
+        dispatch(signinAction(loginData))
     }
     
     
@@ -39,7 +41,13 @@ const LoginScreen = () => {
                             <FormInput placeholder="Password" name="password" onChange={fillLoginFields} type="password" />
 
                             <div className="submit-button-wrapper">
-                                <button className="submit-button" type="submit">Sign in</button>
+                                <button 
+                                    disabled={(isLoading && type === 'sign') ? true : false} 
+                                    className={`submit-button`}
+                                    type="submit"
+                                >
+                                    {(isLoading && type === 'sign') ? "Loading..." : "Sign in"}
+                                </button>
                             </div>
 
                             <div className="auth-links">

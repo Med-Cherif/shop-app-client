@@ -6,3 +6,9 @@
     font-size: 18px;
     font-weight: 500;
 }
+
+.resend-link-button {
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+}

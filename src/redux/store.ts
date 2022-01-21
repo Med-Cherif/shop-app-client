@@ -8,11 +8,15 @@ const appReducer = combineReducers({
 const rootReducer = (state: any /* ReturnType<typeof appReducer> */, action: any) => {
     if (action.type === 'auth/logout') {
         state = {
+            ...state,
             auth: {
                 accessToken: null,
                 refreshToken: null,
                 error: null,
-                isLoading: false,
+                loading: {
+                    isLoading: false,
+                    type: ''
+                },
                 userData: null
             }
         }
@@ -22,7 +26,11 @@ const rootReducer = (state: any /* ReturnType<typeof appReducer> */, action: any
             ...state,
             auth: {
                 ...state.auth,
-                error: null
+                error: null,
+                loading: {
+                    isLoading: false,
+                    type: ''
+                }
             }
         }
     }
