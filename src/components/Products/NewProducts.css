@@ -1,0 +1,9 @@
+.products-wrapper {
+    padding: 50px 25px;
+}
+
+.products-wrapper-title {
+    font-size: 2rem;
+    text-align: center;
+    color: var(--main-color);
+}

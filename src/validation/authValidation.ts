@@ -59,6 +59,7 @@ class AuthValidation {
     }
     
     validateAllFields(data: SignupData): true | string[] {
+        this.resetError();
         if (!data.email || !data.confirmPassword || !data.password || !data.name || !data.username) {
             this.error = 'All field are required';
         }

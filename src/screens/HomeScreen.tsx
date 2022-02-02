@@ -1,6 +1,7 @@
 import CategoriesBar from "../components/CategoriesBar/CategoriesBar"
 import Navbar from "../components/Navbar/Navbar"
 import Alert from "../components/Alert";
+import NewProducts from "../components/Products/NewProducts";
 
 const HomeScreen = () => {
     return (
@@ -8,6 +9,7 @@ const HomeScreen = () => {
             <Alert />
             <Navbar />
             <CategoriesBar />
+            <NewProducts />
         </div>
     )
 }
