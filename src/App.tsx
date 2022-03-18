@@ -9,6 +9,8 @@ import TopError from "./components/Errors/TopError";
 import PublicRoute from "./components/PublicRoute";
 import ConfirmationScreen from "./screens/ConfirmationScreen";
 import Portal from "./components/Portal";
+import Product from "./screens/Product";
+import Products from "./screens/Products";
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
         <Route path="/register" element={<PublicRoute><RegisterScreen /></PublicRoute>} />
         <Route path="/login" element={<PublicRoute><LoginScreen /></PublicRoute>} />
         <Route path="/confirmation/:email/:token" element={<ConfirmationScreen />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<Product />} />
       </Routes>
       <Sidebar />
       <TopError />

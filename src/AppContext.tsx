@@ -12,6 +12,9 @@ interface GlobalState {
     isSidebarVisible: boolean;
     showSidebar: () => void;
     hideSidebar: () => void;
+    isFilterVisible: boolean;
+    closeFilter: () => void;
+    openFilter: () => void;
 }
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
@@ -19,6 +22,15 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     const dispatch = useDispatch()
     const location = useLocation()
     const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+    const [isFilterVisible, setIsFilterVisible] = useState(false);
+
+    const closeFilter = () => {
+        setIsFilterVisible(false)
+    }
+
+    const openFilter = () => {
+        setIsFilterVisible(true)
+    }
 
     const showSidebar = () => setIsSidebarVisible(true)
     const hideSidebar = () => setIsSidebarVisible(false)
@@ -29,7 +41,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <AppContext.Provider value={{
-            isSidebarVisible, showSidebar, hideSidebar
+            isSidebarVisible, showSidebar, hideSidebar, closeFilter, openFilter, isFilterVisible
         }}>
             {children}
         </AppContext.Provider>

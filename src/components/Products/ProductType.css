@@ -1,0 +1,27 @@
+.product-type-title {
+    margin: 20px 0 10px;
+    font-weight: 500;
+    font-size: 28px;
+    color: #111;
+}
+
+.product-specification-item:not(:last-child) {
+    margin-bottom: 6px;
+}
+
+.product-description {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 14px;
+}
+
+.product-specification-item-key {
+    font-weight: 500;
+    font-size: 15px;
+
+}
+
+.product-specification-item-value {
+    font-size: 18px;
+    font-weight: 600;
+}

@@ -8,8 +8,13 @@ import { FaUserAlt, FaShoppingCart, FaSignOutAlt } from "react-icons/fa";
 import { useGlobalState } from "../../AppContext";
 import { useNavigate } from "react-router-dom";
 import { logoutAction } from "../../redux/actions/authActions";
+import NavbarSearchProducts from "./NavbarSearchProducts";
 
-const Navbar = () => {
+interface IProps {
+    hideSearchBox?: boolean
+}
+
+const Navbar = ({ hideSearchBox }: IProps) => {
     const [isUserMenuVisible, setIsUserMenuVisible] = useState(false)
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -30,19 +35,18 @@ const Navbar = () => {
         navigateToSigninScreen()
     }
 
+    const navigateToHomeScreen = () => {
+        navigate('/')
+    }
+
     return (
         <div className="navbar">
             <nav className="navbar-wrapper">
                 <div className="navbar-left">
                     <FiMenu onClick={showSidebar} className="menu-icon" />
-                    <h2 className="app-title">Bibo</h2>
+                    <h2 onClick={navigateToHomeScreen} className="app-title">Bibo</h2>
                 </div>
-                <div className="navbar-center">
-                    <div className="search-input-container">
-                        <input type="text" placeholder="Search for products" />
-                        <GrSearch />
-                    </div>
-                </div>
+                { !hideSearchBox && <NavbarSearchProducts />}
                 <div className="navbar-right">
                     <div onClick={handleOnUserClick} className="navbar-right-item-wrapper">
                         <FaUserAlt />

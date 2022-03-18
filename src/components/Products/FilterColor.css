@@ -1,0 +1,19 @@
+.filter-color {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.color-box {
+    width: 26px;
+    height: 26px;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+.filter-color.transparent .color-box {
+    border: none;
+    width: auto;
+    height: auto;
+}

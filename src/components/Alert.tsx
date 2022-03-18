@@ -14,11 +14,11 @@ const Alert = () => {
 
     const disableResendLink = () => setIsResendLinkReady(false)
 
-    useEffect(() => {
-        setTimeout(() => {
-            setIsResendLinkReady(true)
-        }, 2000 * 60)
-    }, [isResendLinkReady])
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setIsResendLinkReady(true)
+    //     }, 2000 * 60)
+    // }, [isResendLinkReady])
 
     const resendLink = () => {
         dispatch(resendActivateAccountLinkAction(disableResendLink))
