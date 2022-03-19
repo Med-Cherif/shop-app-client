@@ -2,7 +2,7 @@ import "./ProductsList.css";
 import ProductCard from "./ProductCard";
 
 interface IProps {
-    products: { title: string; price: number; image: string, type: string }[];
+    products: { [field: string]: any }[];
     title: string;
     disablePadding?: boolean
 }
@@ -24,7 +24,7 @@ const ProductsList = ({ products, title, disablePadding }: IProps) => {
             </h2>
             <div className="products-container">
                 {products.map((product) => (
-                    <ProductCard key={product.title} {...product} />
+                    <ProductCard key={product._id} {...product} />
                 ))}
             </div>
 

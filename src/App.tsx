@@ -16,7 +16,6 @@ import Products from "./screens/Products";
 function App() {
   return (
     <div className="App test">
-      
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/register" element={<PublicRoute><RegisterScreen /></PublicRoute>} />

@@ -3,27 +3,18 @@ import './ProductCard.css';
 
 
 interface IProps {
-    image: string;
-    title: string;
-    price: number;
+    [field: string]: string
 }
 
-const ProductCard = ({ image, title, price }: IProps) => {
+const ProductCard = ({ _id, image, name, price }: IProps) => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    const randomValue = () => {
-        const min = 100;
-        const max = 999;
-
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
-
-    return <div onClick={() => navigate(`/products/${randomValue()}`)} className="product-card">
+    return <div onClick={() => navigate(`/products/${_id}`)} className="product-card">
         <div className="product-image">
             <img src={image} alt="Product" />
         </div>
-        <h2 className="product-title">{title}</h2>
+        <h2 className="product-title">{name}</h2>
         <span className="product-price">{price}$</span>
     </div>;
 };
