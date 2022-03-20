@@ -11,11 +11,12 @@ import ConfirmationScreen from "./screens/ConfirmationScreen";
 import Portal from "./components/Portal";
 import Product from "./screens/Product";
 import Products from "./screens/Products";
+import Address from "./screens/Address";
 
 
 function App() {
   return (
-    <div className="App test">
+    <div className="App">
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/register" element={<PublicRoute><RegisterScreen /></PublicRoute>} />
@@ -23,6 +24,7 @@ function App() {
         <Route path="/confirmation/:email/:token" element={<ConfirmationScreen />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<Product />} />
+        <Route path="/address" element={<Address />} />
       </Routes>
       <Sidebar />
       <TopError />

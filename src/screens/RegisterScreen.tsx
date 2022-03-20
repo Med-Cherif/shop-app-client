@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AppDescription from "../components/AppDescription";
 import FormFooter from "../components/Form/FormFooter";
 import FormInput from "../components/Form/FormInput";
+import FormButton from "../components/FormButton";
 import { signupAction } from "../redux/actions/authActions";
 import { RootState } from "../redux/store";
 
@@ -46,15 +47,11 @@ const RegisterScreen = () => {
                             <FormInput placeholder="Password" name="password" onChange={fillRegisterFields} type="password" />
                             <FormInput placeholder="Confirm password" name="confirmPassword" onChange={fillRegisterFields} type="password" />
 
-                            <div className="submit-button-wrapper">
-                                <button 
-                                    className="submit-button" 
-                                    type="submit"
-                                    disabled={(isLoading && type === 'sign')}
-                                >
-                                    {(isLoading && type === 'sign') ? "Loading..." : "Sign up"}
-                                </button>
-                            </div>
+                            <FormButton 
+                                disabled={isLoading && type === "sign"}
+                                text="Sign up"
+                                loading={isLoading && type === "sign"}
+                            />
 
                             <div className="auth-links">
                                 <Link to="/login">Already have an Account? Sign in</Link>
