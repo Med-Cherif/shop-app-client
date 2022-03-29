@@ -55,7 +55,7 @@ const FilterProductsType = ({ filterData, setFilterData }: IProps) => {
         <select onChange={handleChange} className="filter-bar-select" name="category" value={filterData?.category ? filterData?.category : 'all'}>
             <option value="all">All categories</option>
             {productsOption.map((option) => (
-              <option style={{ textTransform: 'capitalize' }} key={option.title} value={option.title}>{option.title}</option>
+              <option style={{ textTransform: 'capitalize' }} key={option.title} value={option.value}>{option.title}</option>
             ))}
         </select>
           {

@@ -24,10 +24,10 @@ export const categories = [
         link: '/products?category=phone / computer accessoires', 
         title: 'Phones & Computers accessoires', 
         items: [
-            { name: 'Headphones', link: '/products?category=phone / computer accessoires&productType=headphones' },
-            { name: 'Earphones', link: '/products?category=phone / computer accessoires&productType=earphones' },
-            { name: 'Anti shocks', link: '/products?category=phone / computer accessoires&productType=anti shocks' },
-            { name: 'Chargers', link: '/products?category=phone / computer accessoires&productType=chargers' },
+            { name: 'Headphone', link: '/products?category=phone / computer accessoires&productType=headphone' },
+            { name: 'Earphone', link: '/products?category=phone / computer accessoires&productType=earphone' },
+            { name: 'Anti shock', link: '/products?category=phone / computer accessoires&productType=anti shock' },
+            { name: 'Charger', link: '/products?category=phone / computer accessoires&productType=charger' },
         ],
         Icon: FaHeadphones 
     },
@@ -50,10 +50,10 @@ export const categories = [
         link: '/products?category=women clothes',
         title: 'Women clothes', 
         items: [
-            { name: 'T-shirts', link: '/products?category=women clothes&productType=t-shirts' },
-            { name: 'Pants', link: '/products?category=women clothes&productType=pants' },
-            { name: 'Shoes', link: '/products?category=women clothes&productType=shoes' },
-            { name: 'Coats', link: '/products?category=women clothes&productType=coats' },
+            { name: 'T-shirt', link: '/products?category=women clothes&productType=t-shirt' },
+            { name: 'Pant', link: '/products?category=women clothes&productType=pant' },
+            { name: 'Shoe', link: '/products?category=women clothes&productType=shoe' },
+            { name: 'Coat', link: '/products?category=women clothes&productType=coat' },
         ],
         Icon: GiAmpleDress 
     },
@@ -62,10 +62,10 @@ export const categories = [
         link: '/products?category=men clothes', 
         title: 'Man clothes', 
         items: [
-            { name: 'T-shirts', link: '/products?category=men clothes&productType=tshirts' },
-            { name: 'Pants', link: '/products?category=men clothes&productType=pants' },
-            { name: 'Shoes', link: '/products?category=men clothes&productType=shoes' },
-            { name: 'Coats', link: '/products?category=men clothes&productType=coats' },
+            { name: 'T-shirt', link: '/products?category=men clothes&productType=t-shirt' },
+            { name: 'Pant', link: '/products?category=men clothes&productType=pant' },
+            { name: 'Shoe', link: '/products?category=men clothes&productType=shoe' },
+            { name: 'Coat', link: '/products?category=men clothes&productType=coat' },
         ],
         Icon: GiClothes 
     },
@@ -74,10 +74,10 @@ export const categories = [
         link: '/products?category=babies clothes', 
         title: 'Babies Clothes', 
         items: [
-            { name: 'T-shirts', link: '/products?category=babies clothes&productType=tshirts' },
-            { name: 'Pants', link: '/products?category=babies clothes&productType=pants' },
-            { name: 'Shoes', link: '/products?category=babies clothes&productType=shoes' },
-            { name: 'Coats', link: '/products?category=babies clothes&productType=coats' },
+            { name: 'T-shirt', link: '/products?category=babies clothes&productType=t-shirt' },
+            { name: 'Pant', link: '/products?category=babies clothes&productType=pant' },
+            { name: 'Shoe', link: '/products?category=babies clothes&productType=shoe' },
+            { name: 'Coat', link: '/products?category=babies clothes&productType=coat' },
         ],
         Icon: FaBaby 
     },
@@ -86,8 +86,8 @@ export const categories = [
         link: '/products?category=fashion', 
         title: 'Fashion', 
         items: [
-            { name: 'Watchs', link: '/products?category=fashion&productType=watches' },
-            { name: 'Parfums', link: '/products?category=fashion&productType=parfums' },
+            { name: 'Watch', link: '/products?category=fashion&productType=watch' },
+            { name: 'Parfum', link: '/products?category=fashion&productType=parfum' },
         ],
         Icon: VscWatch 
     },
@@ -96,10 +96,10 @@ export const categories = [
         link: '/products?category=cosmetics / beauty', 
         title: 'Cosmetics & Beauty', 
         items: [
-            { name: 'Soaps', link: '/products?category=cosmetics / beauty&productType=soaps' },
-            { name: 'Parfums', link: '/products?category=cosmetics / beauty&productType=parfums' },
-            { name: 'Deodorants', link: '/products?category=cosmetics / beauty&productType=deodorants' },
-            { name: 'Shampoos', link: '/products?category=cosmetics / beauty&productType=shampoos' },
+            { name: 'Soap', link: '/products?category=cosmetics / beauty&productType=soap' },
+            { name: 'Parfum', link: '/products?category=cosmetics / beauty&productType=parfum' },
+            { name: 'Deodorant', link: '/products?category=cosmetics / beauty&productType=deodorant' },
+            { name: 'Shampoo', link: '/products?category=cosmetics / beauty&productType=shampoo' },
         ],
         Icon: GiDelicatePerfume 
     },

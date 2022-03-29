@@ -13,6 +13,9 @@ import WatchFilter from "./Watch/WatchFilter";
 import { useGlobalState } from "../../AppContext";
 import { useSearchParams } from "react-router-dom";
 import { getProductType } from "../../helpers/getProductType";
+import Status from "../Status";
+import { useDispatch } from "react-redux";
+import { getFilteredProductsAction } from "../../redux/actions/productActions";
 
 const filterComponents = {
   'phones': <PhoneFilter />,
@@ -43,12 +46,13 @@ const delay = () => {
 
 const FilterBar = () => {
     const { isFilterVisible, closeFilter } = useGlobalState();
+    const dispatch = useDispatch()
     const [searchParams, setSearchParams] = useSearchParams();
     const [filterData, setFilterData] = useState<{ [field: string]: string }>(() => getFilterData(searchParams))
     const [type, setType] = useState<null | string>(null);
     const [status, setStatus] = useState<"loading" | "error" | "success" | null>(null);
     
-    const getProducts = () => {
+    const handleParams = () => {
       let data: { [field: string]: string } = {};
 
       for (let item in filterData) {
@@ -56,9 +60,11 @@ const FilterBar = () => {
           data[item] = filterData[item]
         }
       }
+      setSearchParams(data)  
+    }
 
-      setSearchParams(data)
-      
+    const getProductsByFilter = () => {
+      dispatch(getFilteredProductsAction(filterData, handleParams))
     }
 
     const displayFilterProductsByType = (): React.ReactNode => {
@@ -69,16 +75,16 @@ const FilterBar = () => {
 
     useEffect(() => {
       setType(getProductType(filterData?.category, filterData?.productType))
-  }, [filterData])
+    }, [filterData])
 
     useEffect(() => {
-      setStatus('loading');
-      delay()
-        .then(() => {
-          setStatus('success')
-          console.log(filterData)
-        })
-    }, [filterData?.category, filterData?.productType])
+      let obj: { [field: string]: string } = {};
+      for (let [key, value] of searchParams.entries()) {
+          obj[key] = value;
+      }
+      dispatch(getFilteredProductsAction(obj))
+    }, [])
+
 
     return (
       <div className={`filter-bar ${isFilterVisible ? "active" : ""}`}>
@@ -86,15 +92,12 @@ const FilterBar = () => {
           <h2 className="filter-bar-title">Filter products</h2>
           <FilterProductsType filterData={filterData} setFilterData={setFilterData} />
           <PriceRange setFilterData={setFilterData} filterData={filterData} />
-          {
-            status === 'loading' 
-              ? <h2 style={{ textAlign: "center" }}>Loading...</h2> : 
-            status === 'success' 
-              ? displayFilterProductsByType() :
-            status === 'error' ? <h2 style={{ textAlign: "center" }}>Error...</h2> : 
-              null
-          }
-          <button onClick={getProducts} className="filter-submit-btn">Filter</button>
+          <Status 
+              status={status}
+              Success={displayFilterProductsByType()}
+              Loading={<h2 style={{ textAlign: "center" }}>Loading...</h2>}
+          />
+          <button onClick={getProductsByFilter} className="filter-submit-btn">Filter</button>
           <GrClose onClick={closeFilter} className="close-icon" />
         </div>
       </div>

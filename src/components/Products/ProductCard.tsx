@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './ProductCard.css';
 
 
@@ -8,14 +8,14 @@ interface IProps {
 
 const ProductCard = ({ _id, image, name, price }: IProps) => {
 
-    const navigate = useNavigate();
-
-    return <div onClick={() => navigate(`/products/${_id}`)} className="product-card">
-        <div className="product-image">
-            <img src={image} alt="Product" />
-        </div>
-        <h2 className="product-title">{name}</h2>
-        <span className="product-price">{price}$</span>
+    return <div className="product-card">
+        <Link className='product-card-link' to={`/products/${_id}`}>
+            <div className="product-image">
+                <img src={image} alt="Product" />
+            </div>
+            <h2 className="product-title">{name}</h2>
+            <span className="product-price">{price}$</span>
+        </Link>
     </div>;
 };
 

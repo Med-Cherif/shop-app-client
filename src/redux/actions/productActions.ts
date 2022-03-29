@@ -1,6 +1,6 @@
 import ProductApis from "../../apis/productApi";
 import { productActions } from "../slices/productSlice";
-import { AppDispatch, RootState } from "../store";
+import { AppDispatch } from "../store";
 
 const productApi = new ProductApis();
 
@@ -15,7 +15,7 @@ export const getSimilarProductAction = (categories: string[]) => async (dispatch
     let queryParam = '';
 
     for (let category of categories) {
-        queryParam += `&categories=${category}`
+        queryParam += `&categories=${encodeURIComponent(category)}`
     }
 
     try {
@@ -44,6 +44,7 @@ export const getSearchedProductsAction = (keyword: string) => async (dispatch: A
     dispatch(productActions.loading());
     try {
         const { data } = await productApi.getSearchedProducts(keyword);
+        console.log(data.products)
         dispatch(productActions.getProducts({
             products: data.products
         }))
@@ -59,6 +60,28 @@ export const getLatestProductsAction = () => async (dispatch: AppDispatch) => {
         dispatch(productActions.getLatestProducts({
             products: data.products
         }))
+    } catch (error) {
+        dispatch(productActions.error(errorHandler(error)))
+    }
+}
+
+export const getFilteredProductsAction = (filterQuery: { [field: string]: any }, cb?: () => void) => async (dispatch: AppDispatch) => {
+    dispatch(productActions.loading());
+    let queryParam: string | string[] = [];
+    for (let key in filterQuery) {
+        queryParam.push(`${encodeURIComponent(key)}=${encodeURIComponent(filterQuery[key])}`)
+    }
+
+    queryParam = queryParam.join('&');
+
+    try {
+        const { data } = await productApi.getFilteredProducts(queryParam);
+        dispatch(productActions.getProducts({
+            products: data.products
+        }))
+        if (cb) {
+            cb()
+        }
     } catch (error) {
         dispatch(productActions.error(errorHandler(error)))
     }

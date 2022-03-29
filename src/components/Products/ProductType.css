@@ -24,6 +24,7 @@
 .product-specification-item-value {
     font-size: 18px;
     font-weight: 600;
+    text-transform: capitalize;
 }
 
 .product-screen-image > img {

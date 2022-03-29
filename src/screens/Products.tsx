@@ -1,12 +1,13 @@
 import "./styles/Products.css";
-import { useLocation, useSearchParams } from "react-router-dom"
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSearchParams } from "react-router-dom"
 import Footer from "../components/Footer/Footer"
 import Navbar from "../components/Navbar/Navbar"
-import FilterBar from "../components/Products/FilterBar"
-import ProductsScreenList from "../components/Products/ProductsScreenList"
 import { GrSearch } from "react-icons/gr";
-import { useEffect, useState } from "react";
 import { useGlobalState } from "../AppContext";
+import { getSearchedProductsAction } from "../redux/actions/productActions";
+import ProductsWrapper from "../components/Products/ProductsWrapper";
 
 function getSearchValue(searchParams: URLSearchParams) {
     const search = searchParams.get('search');
@@ -15,10 +16,21 @@ function getSearchValue(searchParams: URLSearchParams) {
 }
 
 const Products = () => {
+    const dispatch = useDispatch();
     const { openFilter } = useGlobalState();
 
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams] = useSearchParams()
     const [searchValue, setSearchValue] = useState(() => getSearchValue(searchParams));
+
+    const searchProducts = () => {
+        dispatch(getSearchedProductsAction(searchValue));
+    }
+
+    const searchProductsWithEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key.toLowerCase() === 'enter') {
+            searchProducts();
+        }
+    }
 
 
     return (
@@ -31,16 +43,14 @@ const Products = () => {
                             value={searchValue} 
                             onChange={(e) => setSearchValue(e.target.value)}
                             type="text" 
+                            onKeyUp={searchProductsWithEnter}
                             placeholder="Search for products by Name, Category..." 
                             className="products-search-input" 
                         />
-                        <GrSearch />
+                        <GrSearch onClick={searchProducts} />
                     </div>
                 </div>
-                <div className="products-screen-wrapper">
-                    <FilterBar />
-                    <ProductsScreenList />
-                </div>
+                <ProductsWrapper />
             </div>
             <button onClick={openFilter} className="open-filter-button">Filter</button>
             <Footer />

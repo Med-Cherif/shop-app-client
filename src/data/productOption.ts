@@ -1,15 +1,15 @@
-const clothesProducts = ['T-shirts', 'Pants', 'Shoes', 'Coats'];
-const fashionProducts = ['Watches', 'Parfums'];
-const cosmeticsAndBeautyProducts = ['Soaps', 'Parfums', 'Deodorants', 'Shampoos'];
-const accessoiresProducts = ['Chargers', 'Anti shocks', 'Headphones', 'Earphones']
+const clothesProducts = ['T-shirt', 'Pant', 'Shoe', 'Coat'];
+const fashionProducts = ['Watch', 'Parfum'];
+const cosmeticsAndBeautyProducts = ['Soap', 'Parfum', 'Deodorant', 'Shampoo'];
+const accessoiresProducts = ['Charger', 'Anti shock', 'Headphone', 'Earphone']
 
 export const productsOption = [
-  { title: 'phone / computer accessoires', link: 'catephone / computer accessoires', productsType: accessoiresProducts },
-  { title: 'phones', link: 'phones', productsType: null },
-  { title: 'computers', link: 'computers', productsType: null },
-  { title: 'women clothes', link: 'clothes?for=', productsType: clothesProducts },
-  { title: 'men clothes', productsType: clothesProducts },
-  { title: 'babies clothes', productsType: clothesProducts },
-  { title: 'fashion', productsType: fashionProducts },
-  { title: 'cosmetics / beauty', productsType: cosmeticsAndBeautyProducts },
+  { title: 'phone / computer accessoires', value: 'phone / computer accessoires', productsType: accessoiresProducts },
+  { title: 'phones',                       value: 'phones',                       productsType: null },
+  { title: 'computers',                    value: 'computers',                    productsType: null },
+  { title: 'women clothes',                value: 'women clothes',                productsType: clothesProducts },
+  { title: 'men clothes',                  value: 'men clothes',                  productsType: clothesProducts },
+  { title: 'babies clothes',               value: 'babies clothes',               productsType: clothesProducts },
+  { title: 'fashion',                      value: 'fashion',                      productsType: fashionProducts },
+  { title: 'cosmetics / beauty',           value: 'cosmetics / beauty',           productsType: cosmeticsAndBeautyProducts },
 ]

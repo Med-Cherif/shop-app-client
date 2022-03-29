@@ -7,6 +7,10 @@ export default class ProductApis {
         return axios.get(`${apiUrl}?type=latest`)
     }
 
+    getFeatures(query: string) {
+        return axios.get(`${apiUrl}/features${query}`)
+    }
+
     getSimilarProducts(categories: string) {
         // &categories=field1&category=field2&category=field3
         return axios.get(`${apiUrl}?type=similar${categories}`)
@@ -18,5 +22,10 @@ export default class ProductApis {
 
     getSingleProduct(productID: string) {
         return axios.get(`${apiUrl}/single/${productID}`)
+    }
+
+    getFilteredProducts(filter: string) {
+        // fitler = category=x&productType=y&minprice=0&maxprice=500
+        return axios.get(`${apiUrl}/filter?${filter}`)
     }
 }

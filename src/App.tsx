@@ -1,5 +1,4 @@
 import "./App.css";
-import { createPortal } from "react-dom";
 import { Route, Routes } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import Sidebar from "./components/Sidebar/Sidebar";
@@ -7,15 +6,17 @@ import RegisterScreen from "./screens/RegisterScreen";
 import LoginScreen from "./screens/LoginScreen";
 import TopError from "./components/Errors/TopError";
 import PublicRoute from "./components/PublicRoute";
+import PrivateRoute from "./components/PrivateRoute";
 import ConfirmationScreen from "./screens/ConfirmationScreen";
 import Portal from "./components/Portal";
 import Product from "./screens/Product";
 import Products from "./screens/Products";
+import CartScreen from "./screens/Cart";
 
 
 function App() {
   return (
-    <div className="App test">
+    <div className="App">
       <Routes>
         <Route path="/" element={<HomeScreen />} />
         <Route path="/register" element={<PublicRoute><RegisterScreen /></PublicRoute>} />
@@ -23,6 +24,7 @@ function App() {
         <Route path="/confirmation/:email/:token" element={<ConfirmationScreen />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<Product />} />
+        <Route path="/cart" element={<PrivateRoute><CartScreen /></PrivateRoute>} />
       </Routes>
       <Sidebar />
       <TopError />
