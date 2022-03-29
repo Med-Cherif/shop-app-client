@@ -12,6 +12,7 @@ import Portal from "./components/Portal";
 import Product from "./screens/Product";
 import Products from "./screens/Products";
 import CartScreen from "./screens/Cart";
+import Address from "./screens/Address";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<Product />} />
         <Route path="/cart" element={<PrivateRoute><CartScreen /></PrivateRoute>} />
+        <Route path="/address" element={<Address />} />
       </Routes>
       <Sidebar />
       <TopError />

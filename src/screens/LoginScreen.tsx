@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AppDescription from "../components/AppDescription";
 import FormInput from "../components/Form/FormInput";
+import FormButton from "../components/FormButton";
 import { signinAction } from "../redux/actions/authActions";
 import { RootState } from "../redux/store";
 import "./styles/Login.css";
@@ -40,15 +41,11 @@ const LoginScreen = () => {
                             <FormInput placeholder="Username or E-mail" name="preferedField" onChange={fillLoginFields} type="text" />
                             <FormInput placeholder="Password" name="password" onChange={fillLoginFields} type="password" />
 
-                            <div className="submit-button-wrapper">
-                                <button 
-                                    disabled={(isLoading && type === 'sign') ? true : false} 
-                                    className={`submit-button`}
-                                    type="submit"
-                                >
-                                    {(isLoading && type === 'sign') ? "Loading..." : "Sign in"}
-                                </button>
-                            </div>
+                            <FormButton
+                                disabled={isLoading && type === "sign"}
+                                text="Sign in"
+                                loading={isLoading && type === "sign"}
+                            />
 
                             <div className="auth-links">
                                 <Link to="/register">New here? create a new Account</Link>
